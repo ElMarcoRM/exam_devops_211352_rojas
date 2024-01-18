@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from os import getenv, environ
 from config import CONFIG
 
+
 app = Flask(__name__)
 
 application = app
@@ -31,6 +32,9 @@ with create_engine(app.config['MYSQL_ENGINE_URI']).connect() as connection:
     connection.execute(text(f"CREATE DATABASE IF NOT EXISTS {app.config['DB_NAME']}"))
 
 migrate = Migrate(app, db)
+
+from models import create_models
+create_models(app)
 
 from models import *
 
