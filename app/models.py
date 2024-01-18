@@ -10,6 +10,9 @@ class Tests(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     test = db.Column(db.String(100))
-    def create_models(app):
+
+
+
+def create_models(app):
     with app.app_context():
         db.create_all()
