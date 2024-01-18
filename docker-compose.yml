@@ -1,0 +1,38 @@
+version: '3'
+services:
+  mysql_db:
+    container_name: mysql_db
+    hostname: mysql_db
+    image: mysql:8.1.0
+    ports:
+      - "32001:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    restart: unless-stopped
+    healthcheck:
+      test: mysqladmin ping -h localhost -u root --password=$$MYSQL_ROOT_PASSWORD
+      start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - mysql:/var/lib/mysql
+      
+  wsgi_app:
+    container_name: wsgi_app
+    hostname: wsgi_app
+    image: fogzan/alpenistsproject:latest
+    build: 
+      context: .
+      dockerfile: Dockerfile.service
+    ports:
+      - 5000:5000
+    restart: always
+    depends_on:
+      mysql_db:
+        condition: service_healthy
+    env_file:
+      - .env
+volumes:
+  mysql:
