@@ -40,4 +40,7 @@ def index():
     test1 = Tests(test='test1')
     db.session.add(test1)
     db.session.commit()
-    return render_template('index.html')
+    
+    text1 = Tests.get(1).test
+    text = Tests.query.filter(Tests.id == 1).one()
+    return render_template('index.html', text=text)
