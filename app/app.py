@@ -36,16 +36,6 @@ migrate = Migrate(app, db)
 from models import *
 create_models(app)
 
-def init_login_manager(app):
-    login_manager = LoginManager()
-    login_manager.init_app(app)
-    login_manager.login_view = 'auth.login'
-    login_manager.login_message = 'Для доступа к данной странице необходимо пройти процедуру аутентификации.'
-    login_manager.login_message_category = 'warning'
-    login_manager.user_loader(load_user)
-
-init_login_manager(app)
-
 # Главная страница и просмотр события
 @app.route('/')
 def index():
@@ -68,6 +58,16 @@ def employees():
 def load_user(user_id):
     user = db.session.execute(db.select(Workers).filter_by(id=user_id)).scalar()
     return user
+
+def init_login_manager(app):
+    login_manager = LoginManager()
+    login_manager.init_app(app)
+    login_manager.login_view = 'auth.login'
+    login_manager.login_message = 'Для доступа к данной странице необходимо пройти процедуру аутентификации.'
+    login_manager.login_message_category = 'warning'
+    login_manager.user_loader(load_user)
+
+init_login_manager(app)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
