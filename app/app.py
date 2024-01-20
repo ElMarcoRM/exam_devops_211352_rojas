@@ -93,9 +93,7 @@ def logout():
     logout_user()
     return redirect(url_for("index"))
 
-@app.route('/add_data')
 def add_data():
-    
     user1 = Workers(name='Андрей',login='aobugin',status='Работает')
     user1.set_password('qwerty1234')
     db.session.add(user1)
@@ -121,4 +119,5 @@ def add_data():
     db.session.add(event1)
 
     db.session.commit()
-    return redirect(url_for("index"))
+
+add_data()
