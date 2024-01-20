@@ -73,6 +73,7 @@ def add_data():
 # Главная страница и просмотр события
 @app.route('/')
 def index():
+    events = {}
     information = {}
     if request.method == 'POST':
         year = request.form.get('year')
