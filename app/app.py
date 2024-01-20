@@ -94,21 +94,6 @@ def logout():
     return redirect(url_for("index"))
 
 def add_data():
-    user1 = Workers(name='Андрей',login='aobugin',status='Работает')
-    user1.set_password('qwerty1234')
-    db.session.add(user1)
-    db.session.commit()
-    
-    user2 = Workers(name='Дмитрий',login='dmrukole',status='Уволен')
-    user2.set_password('aebc19kl')
-    db.session.add(user2)
-    db.session.commit()
-    
-    user3 = Workers(name='Денис',login='dbshafran',status='Работает')
-    user3.set_password('qcvk13091')
-    db.session.add(user3)
-    db.session.commit()
-    
     event1 = Events(year=2018, date='15 февраля', desc='Рождение 10000 жителя города')
     db.session.add(event1)
     db.session.commit()
@@ -124,7 +109,24 @@ def add_data():
     event1 = Events(year=1789, date='1 октября', desc='Первое упоминание о городе')
     db.session.add(event1)
     db.session.commit()
-        
+
+    user1 = Workers(name='Андрей',login='aobugin',status='Работает')
+    user1.set_password('qwerty1234')
+    db.session.add(user1)
+    db.session.commit()
+
+    user2 = Workers(name='Дмитрий',login='dmrukole',status='Уволен')
+    user2.set_password('aebc19kl')
+    db.session.add(user2)
+    db.session.commit()
+
+    user3 = Workers(name='Денис',login='dbshafran',status='Работает')
+    user3.set_password('qcvk13091')
+    db.session.add(user3)
+    db.session.commit()
+
+
+
     
 
 add_data()
