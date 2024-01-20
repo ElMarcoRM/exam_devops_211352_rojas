@@ -39,8 +39,6 @@ class Events(db.Model):
     date = db.Column(db.String(100), nullable=False)
     desc = db.Column(db.String(10000), nullable=False)
 
-def get_event_year(year):
-    return Events.query.filter(Events.year == year).all()
 
 
 def create_models(app):
