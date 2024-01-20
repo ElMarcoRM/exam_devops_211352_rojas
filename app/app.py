@@ -76,9 +76,9 @@ def index():
     events = {}
     information = {}
     if request.method == 'POST':
-        year = request.form.get('year')
-        information['year'] = year
-        events = get_event_year(year)
+        year_input = request.form.get('year')
+        information['year'] = year_input
+        events = Events.query.filter(Events.year == year_input).all()
     return render_template('index.html', events=events, information=information)
 
 # Количество сотрудников 

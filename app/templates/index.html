@@ -11,6 +11,53 @@
         <button class="btn btn-primary mb-2" type="submit">Просмотр</button>
     </form>
 </div>
+{% if events %}
+<div class="py-2">
+    <h1>Cобытия</h1>
 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    №
+                </th>
+                <th>
+                    Год события
+                </th>
+                <th>
+                    День события
+                </th>
+                <th>
+                    Описание события
+                </th>
+                <th>
+                    Точная дата
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <td>
+                    {{ loop.index }}
+                </td>
+                <td>
+                    {{ event.year }}
+                </td>
+                <td>
+                    {{ event.date }}
+                </td>
+                <td>
+                    {{ event.desc }}
+                </td>
+                <td>
+                    {{ event.date }} {{ event.year }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
 
 {% endblock %}
