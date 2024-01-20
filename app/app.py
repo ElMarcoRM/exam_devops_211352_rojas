@@ -78,8 +78,7 @@ def index():
         year = request.form.get('year')
         information['year'] = year
         events = get_event_year(year)
-        return render_template('index.html', events=events, information=information)
-    return render_template('index.html', events=None, information=information)
+    return render_template('index.html', events=events, information=information)
 
 # Количество сотрудников 
 @app.route('/count_employees')
