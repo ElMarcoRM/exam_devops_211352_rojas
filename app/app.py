@@ -93,40 +93,34 @@ def logout():
     logout_user()
     return redirect(url_for("index"))
 
-def add_data(db):
-    event1 = Events(year=2018, date='15 февраля', desc='Рождение 10000 жителя города')
-    db.session.add(event1)
-    db.session.commit()
-    
-    event2 = Events(year=1951, date='1 июня', desc='Открытие сталепрокатного завода')
-    db.session.add(event2)
-    db.session.commit()
-    
-    event3 = Events(year=1812, date='30 октября', desc='Освобождение от войск Наполеона')
-    db.session.add(event3)
-    db.session.commit()
-    
-    event4 = Events(year=1789, date='1 октября', desc='Первое упоминание о городе')
-    db.session.add(event4)
-    db.session.commit()
 
-    user1 = Workers(name='Андрей',login='aobugin',status='Работает')
-    user1.set_password('qwerty1234')
-    db.session.add(user1)
-    db.session.commit()
+event1 = Events(year=2018, date='15 февраля', desc='Рождение 10000 жителя города')
+db.session.add(event1)
+db.session.commit()
 
-    user2 = Workers(name='Дмитрий',login='dmrukole',status='Уволен')
-    user2.set_password('aebc19kl')
-    db.session.add(user2)
-    db.session.commit()
+event2 = Events(year=1951, date='1 июня', desc='Открытие сталепрокатного завода')
+db.session.add(event2)
+db.session.commit()
 
-    user3 = Workers(name='Денис',login='dbshafran',status='Работает')
-    user3.set_password('qcvk13091')
-    db.session.add(user3)
-    db.session.commit()
+event3 = Events(year=1812, date='30 октября', desc='Освобождение от войск Наполеона')
+db.session.add(event3)
+db.session.commit()
 
+event4 = Events(year=1789, date='1 октября', desc='Первое упоминание о городе')
+db.session.add(event4)
+db.session.commit()
 
+user1 = Workers(name='Андрей',login='aobugin',status='Работает')
+user1.set_password('qwerty1234')
+db.session.add(user1)
+db.session.commit()
 
-    
+user2 = Workers(name='Дмитрий',login='dmrukole',status='Уволен')
+user2.set_password('aebc19kl')
+db.session.add(user2)
+db.session.commit()
 
-add_data(db)
+user3 = Workers(name='Денис',login='dbshafran',status='Работает')
+user3.set_password('qcvk13091')
+db.session.add(user3)
+db.session.commit()
